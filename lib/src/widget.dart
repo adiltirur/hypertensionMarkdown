@@ -192,15 +192,20 @@ class _MarkdownWidgetState extends State<MarkdownWidget>
   GestureRecognizer createLink(String href) {
     final TapGestureRecognizer recognizer = TapGestureRecognizer()
       ..onTap = () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => OnClickLibrary(
-                  title: articles[int.parse(href)]["title"],
-                  image: articles[int.parse(href)]["img"],
-                  content: articles[int.parse(href)]["content"],
-                  block: articles[int.parse(href)]["block"]),
-            ));
+        print(href);
+        if (href.contains('www.')) {
+          OpenBrowser.launchURL(href);
+        } else {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => OnClickLibrary(
+                    title: articles[int.parse(href)]["title"],
+                    image: articles[int.parse(href)]["img"],
+                    content: articles[int.parse(href)]["content"],
+                    block: articles[int.parse(href)]["block"]),
+              ));
+        }
 
         if (widget.onTapLink != null) widget.onTapLink(href);
       };
