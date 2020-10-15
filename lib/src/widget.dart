@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:meta/meta.dart';
 import 'package:Hypertonie/app/library/onClick.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '_functions_io.dart' if (dart.library.html) '_functions_web.dart';
 import 'builder.dart';
 import 'style_sheet.dart';
@@ -363,5 +364,15 @@ class TaskListSyntax extends md.InlineSyntax {
     el.attributes['checked'] = '${match[1].trim().isNotEmpty}';
     parser.addNode(el);
     return true;
+  }
+}
+
+class OpenBrowser {
+  static launchURL(url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
