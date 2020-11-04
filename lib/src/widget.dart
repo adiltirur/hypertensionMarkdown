@@ -65,7 +65,7 @@ abstract class MarkdownWidget extends StatefulWidget {
     Key key,
     @required this.data,
     this.selectable = false,
-    this.language,
+    @required this.language,
     this.styleSheet,
     this.styleSheetTheme = MarkdownStyleSheetBaseTheme.material,
     this.syntaxHighlighter,
@@ -259,6 +259,7 @@ class MarkdownBody extends MarkdownWidget {
   const MarkdownBody({
     Key key,
     @required String data,
+    @required String language,
     bool selectable = false,
     MarkdownStyleSheet styleSheet,
     MarkdownStyleSheetBaseTheme styleSheetTheme,
@@ -273,6 +274,7 @@ class MarkdownBody extends MarkdownWidget {
   }) : super(
           key: key,
           data: data,
+          language: language,
           selectable: selectable,
           styleSheet: styleSheet,
           styleSheetTheme: styleSheetTheme,
@@ -316,6 +318,7 @@ class Markdown extends MarkdownWidget {
   const Markdown({
     Key key,
     @required String data,
+    @required String language,
     bool selectable = false,
     MarkdownStyleSheet styleSheet,
     MarkdownStyleSheetBaseTheme styleSheetTheme,
@@ -331,6 +334,7 @@ class Markdown extends MarkdownWidget {
   }) : super(
           key: key,
           data: data,
+          language: language,
           selectable: selectable,
           styleSheet: styleSheet,
           styleSheetTheme: styleSheetTheme,
