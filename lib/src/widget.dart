@@ -13,6 +13,7 @@ import '_functions_io.dart' if (dart.library.html) '_functions_web.dart';
 import 'builder.dart';
 import 'style_sheet.dart';
 import 'package:Hypertonie/app/library/articles.dart';
+import 'package:Hypertonie/app/library/articlesEN.dart';
 
 /// Signature for callbacks used by [MarkdownWidget] when the user taps a link.
 ///
@@ -64,6 +65,7 @@ abstract class MarkdownWidget extends StatefulWidget {
     Key key,
     @required this.data,
     this.selectable = false,
+    this.language,
     this.styleSheet,
     this.styleSheetTheme = MarkdownStyleSheetBaseTheme.material,
     this.syntaxHighlighter,
@@ -88,6 +90,10 @@ abstract class MarkdownWidget extends StatefulWidget {
   /// The styles to use when displaying the Markdown.
   ///
   /// If null, the styles are inferred from the current [Theme].
+  ///
+  /// Multi Lnagugage Selection
+  ///
+  final String language;
   final MarkdownStyleSheet styleSheet;
 
   /// Setting to specify base theme for MarkdownStyleSheet
@@ -197,15 +203,27 @@ class _MarkdownWidgetState extends State<MarkdownWidget>
         if (href.contains('www.')) {
           OpenBrowser.launchURL(href);
         } else {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => OnClickLibrary(
-                    title: articles[int.parse(href)]["title"],
-                    image: articles[int.parse(href)]["img"],
-                    content: articles[int.parse(href)]["content"],
-                    block: articles[int.parse(href)]["block"]),
-              ));
+          if (widget.language == 'en') {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => OnClickLibrary(
+                      title: articlesEN[int.parse(href)]["title"],
+                      image: articlesEN[int.parse(href)]["img"],
+                      content: articlesEN[int.parse(href)]["content"],
+                      block: articlesEN[int.parse(href)]["block"]),
+                ));
+          } else if (widget.language == 'de') {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => OnClickLibrary(
+                      title: articles[int.parse(href)]["title"],
+                      image: articles[int.parse(href)]["img"],
+                      content: articles[int.parse(href)]["content"],
+                      block: articles[int.parse(href)]["block"]),
+                ));
+          }
         }
 
         if (widget.onTapLink != null) widget.onTapLink(href);
