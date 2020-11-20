@@ -211,6 +211,7 @@ class _MarkdownWidgetState extends State<MarkdownWidget>
                       title: articlesEN[int.parse(href)]["title"],
                       image: articlesEN[int.parse(href)]["img"],
                       content: articlesEN[int.parse(href)]["content"],
+                      language: widget.language,
                       block: articlesEN[int.parse(href)]["block"]),
                 ));
           } else if (widget.language == 'de') {
@@ -221,6 +222,7 @@ class _MarkdownWidgetState extends State<MarkdownWidget>
                       title: articles[int.parse(href)]["title"],
                       image: articles[int.parse(href)]["img"],
                       content: articles[int.parse(href)]["content"],
+                      language: widget.language,
                       block: articles[int.parse(href)]["block"]),
                 ));
           }
