@@ -5,15 +5,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/supporting/articles.dart';
+import 'package:flutter_markdown/supporting/articlesEN.dart';
+import 'package:flutter_markdown/supporting/read_articles.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:meta/meta.dart';
-import 'package:Hypertonie/app/library/onClick.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 import '_functions_io.dart' if (dart.library.html) '_functions_web.dart';
 import 'builder.dart';
 import 'style_sheet.dart';
-import 'package:Hypertonie/app/library/articles.dart';
-import 'package:Hypertonie/app/library/articlesEN.dart';
 
 /// Signature for callbacks used by [MarkdownWidget] when the user taps a link.
 ///
