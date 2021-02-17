@@ -69,12 +69,8 @@ class _OnClickLibraryState extends State<OnClickLibrary> {
               text: 'libraryTitle'.tr,
               fontSize: 17,
             ),
-            GestureDetector(
-              onTap: () async {},
-              child: RegularText(
-                text: 'libraryChapterTab'.tr,
-                color: Theme.of(context).primaryColor,
-              ),
+            SizedBox(
+              width: 34,
             ),
           ],
         ),
