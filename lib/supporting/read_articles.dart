@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_markdown/supporting/typography.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnClickLibrary extends StatefulWidget {
   final String title;
+  final String rank;
   final String image;
   final String content;
   final String uId;
   final String block;
   final String language;
+  final int date;
 
   OnClickLibrary(
       {Key key,
       @required this.title,
       @required this.language,
+      @required this.rank,
+      this.date,
       this.image,
       this.content,
       this.uId,
@@ -49,18 +56,24 @@ class _OnClickLibraryState extends State<OnClickLibrary> {
     return Scaffold(
       appBar: AppBar(
         title: Row(
-          children: <Widget>[
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
             GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(Icons.arrow_back_ios)),
-            SizedBox(width: 16),
-            Expanded(
-              child: Text(
-                widget.title,
-                style: TextStyle(fontSize: 20.0),
-                overflow: TextOverflow.ellipsis,
+              onTap: () => Navigator.pop(context),
+              child: RegularText(
+                text: 'backButton'.tr,
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
+            Heading(
+              text: 'libraryTitle'.tr,
+              fontSize: 17,
+            ),
+            GestureDetector(
+              onTap: () async {},
+              child: RegularText(
+                text: 'libraryChapterTab'.tr,
+                color: Theme.of(context).primaryColor,
               ),
             ),
           ],
@@ -93,7 +106,11 @@ class _OnClickLibraryState extends State<OnClickLibrary> {
                   child: Container(
                     height: 50,
                     child: GestureDetector(
-                      onTap: () {
+                      onTap: () async {
+                        if (widget.date == 0) {
+                          await ReadDate.setDate(widget.rank);
+                        }
+
                         Navigator.of(context).maybePop();
                       },
                       child: Container(
@@ -101,15 +118,21 @@ class _OnClickLibraryState extends State<OnClickLibrary> {
                           borderRadius: BorderRadius.all(
                             Radius.circular(7.0),
                           ),
-                          color: Colors.green,
+                          color: widget.date == 0
+                              ? Theme.of(context).primaryColor
+                              : Colors.green,
                           border: Border.all(
                               width: 3,
-                              color: Colors.green,
+                              color: widget.date == 0
+                                  ? Theme.of(context).primaryColor
+                                  : Colors.green,
                               style: BorderStyle.solid),
                         ),
                         child: Center(
                             child: Text(
-                          doneButton,
+                          widget.date == 0
+                              ? doneButton
+                              : '${'readTextOnDateButton'.tr}${DateFormat('dd. MMM yyyy', widget.language == 'de' ? 'de_DE' : 'en_EN').format(new DateTime.fromMillisecondsSinceEpoch(widget.date))}',
                           style: TextStyle(
                             fontSize:
                                 MediaQuery.of(context).size.width / (375 / 14),
@@ -213,5 +236,19 @@ class _OnClickLibraryState extends State<OnClickLibrary> {
         ],
       ),
     );
+  }
+}
+
+class ReadDate {
+  static Future setDate(article) async {
+    var now = new DateTime.now();
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setInt(article, now.millisecondsSinceEpoch);
+  }
+
+  static Future getDate(article) async {
+    final prefs = await SharedPreferences.getInstance();
+    print(prefs.getInt(article));
+    return prefs.getInt(article) ?? 0;
   }
 }

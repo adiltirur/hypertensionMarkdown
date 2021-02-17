@@ -199,16 +199,20 @@ class _MarkdownWidgetState extends State<MarkdownWidget>
   @override
   GestureRecognizer createLink(String href) {
     final TapGestureRecognizer recognizer = TapGestureRecognizer()
-      ..onTap = () {
+      ..onTap = () async {
         print(href);
         if (href.contains('www.')) {
           OpenBrowser.launchURL(href);
         } else {
           if (widget.language == 'en') {
+            var date =
+                await ReadDate.getDate(articlesEN[int.parse(href)]["rank"]);
             Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => OnClickLibrary(
+                      rank: articlesEN[int.parse(href)]["rank"],
+                      date: date,
                       title: articlesEN[int.parse(href)]["title"],
                       image: articlesEN[int.parse(href)]["img"],
                       content: articlesEN[int.parse(href)]["content"],
@@ -216,10 +220,14 @@ class _MarkdownWidgetState extends State<MarkdownWidget>
                       block: articlesEN[int.parse(href)]["block"]),
                 ));
           } else if (widget.language == 'de') {
+            var date =
+                await ReadDate.getDate(articles[int.parse(href)]["rank"]);
             Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => OnClickLibrary(
+                      rank: articlesEN[int.parse(href)]["rank"],
+                      date: date,
                       title: articles[int.parse(href)]["title"],
                       image: articles[int.parse(href)]["img"],
                       content: articles[int.parse(href)]["content"],
