@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/supporting/library_chapters.dart';
 import 'package:flutter_markdown/supporting/supporting.dart';
-import 'package:flutter_markdown/supporting/typography.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:Hypertonie_v2/views/widgets/common_widgets/typography.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OnClickLibrary extends StatefulWidget {
