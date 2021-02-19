@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/supporting/library_chapters.dart';
+import 'package:flutter_markdown/supporting/supporting.dart';
 import 'package:flutter_markdown/supporting/typography.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -15,12 +17,14 @@ class OnClickLibrary extends StatefulWidget {
   final String block;
   final String language;
   final int date;
+  final chapter;
 
   OnClickLibrary(
       {Key key,
       @required this.title,
       @required this.language,
       @required this.rank,
+      @required this.chapter,
       this.date,
       this.image,
       this.content,
@@ -69,8 +73,69 @@ class _OnClickLibraryState extends State<OnClickLibrary> {
               text: 'libraryTitle'.tr,
               fontSize: 17,
             ),
-            SizedBox(
-              width: 34,
+            GestureDetector(
+              onTap: () async {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return LibraryChapters(
+                        language: widget.language,
+                        chapter: widget.chapter,
+                        title: widget.title,
+                        list: (widget.chapter == '1')
+                            ? LibrarySupporting.chapter1
+                            : (widget.chapter == '2')
+                                ? LibrarySupporting.chapter2
+                                : (widget.chapter == '3')
+                                    ? LibrarySupporting.chapter3
+                                    : (widget.chapter == '4')
+                                        ? LibrarySupporting.chapter4
+                                        : (widget.chapter == '5')
+                                            ? LibrarySupporting.chapter5
+                                            : (widget.chapter == '6')
+                                                ? LibrarySupporting.chapter6
+                                                : (widget.chapter == '7')
+                                                    ? LibrarySupporting.chapter7
+                                                    : (widget.chapter == '8')
+                                                        ? LibrarySupporting
+                                                            .chapter8
+                                                        : (widget.chapter ==
+                                                                '9')
+                                                            ? LibrarySupporting
+                                                                .chapter9
+                                                            : (widget.chapter ==
+                                                                    '10')
+                                                                ? LibrarySupporting
+                                                                    .chapter10
+                                                                : (widget.chapter ==
+                                                                        '11')
+                                                                    ? LibrarySupporting
+                                                                        .chapter11
+                                                                    : (widget.chapter ==
+                                                                            '12')
+                                                                        ? LibrarySupporting
+                                                                            .chapter12
+                                                                        : (widget.chapter ==
+                                                                                '13')
+                                                                            ? LibrarySupporting.chapter13
+                                                                            : (widget.chapter == '14')
+                                                                                ? LibrarySupporting.chapter14
+                                                                                : (widget.chapter == '15')
+                                                                                    ? LibrarySupporting.chapter15
+                                                                                    : (widget.chapter == '16')
+                                                                                        ? LibrarySupporting.chapter16
+                                                                                        : (widget.chapter == '17')
+                                                                                            ? LibrarySupporting.chapter17
+                                                                                            : [],
+                      );
+                    },
+                  ),
+                );
+              },
+              child: RegularText(
+                text: 'libraryChapterTab'.tr,
+                color: Theme.of(context).primaryColor,
+              ),
             ),
           ],
         ),
@@ -190,6 +255,7 @@ class _OnClickLibraryState extends State<OnClickLibrary> {
                 child: MarkdownBody(
                   language: language,
                   data: widget.block,
+                  chapter: widget.chapter,
                   styleSheet: MarkdownStyleSheet.fromTheme(Theme.of(context))
                       .copyWith(
                           p: Theme.of(context).textTheme.bodyText2.copyWith(
@@ -221,6 +287,7 @@ class _OnClickLibraryState extends State<OnClickLibrary> {
             child: MarkdownBody(
               language: language,
               data: widget.content,
+              chapter: widget.chapter,
               styleSheet: MarkdownStyleSheet.fromTheme(Theme.of(context))
                   .copyWith(
                       p: Theme.of(context).textTheme.bodyText2.copyWith(
