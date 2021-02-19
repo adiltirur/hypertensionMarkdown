@@ -187,82 +187,86 @@ class _LibraryChaptersState extends State<LibraryChapters> {
                           onTap: () {},
                           child: Column(
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16),
-                                child: GestureDetector(
-                                  onTap: () async {
-                                    var date =
-                                        await ReadDate.getDate(article['rank']);
-                                    print(date);
+                              GestureDetector(
+                                onTap: () async {
+                                  var date =
+                                      await ReadDate.getDate(article['rank']);
+                                  print(date);
 
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) {
-                                          return OnClickLibrary(
-                                              chapter: widget.chapter,
-                                              language: widget.language,
-                                              rank: article['rank'],
-                                              title: article["title"],
-                                              image: article["img"],
-                                              date: date,
-                                              content: article["content"],
-                                              block: article["block"]);
-                                        },
-                                      ),
-                                    );
-                                  },
-                                  child: Container(
-                                    height: 64,
-                                    decoration: BoxDecoration(
-                                      border: index != 0 &&
-                                              index != widget.list.length - 1
-                                          ? Border(
-                                              bottom: BorderSide(
-                                                color: Colors.grey,
-                                                width: 0.2,
-                                              ),
-                                            )
-                                          : (null),
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return OnClickLibrary(
+                                            chapter: widget.chapter,
+                                            language: widget.language,
+                                            rank: article['rank'],
+                                            title: article["title"],
+                                            image: article["img"],
+                                            date: date,
+                                            content: article["content"],
+                                            block: article["block"]);
+                                      },
                                     ),
-                                    child: Padding(
-                                      padding:
-                                          const EdgeInsets.only(right: 16.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Visibility(
-                                            visible: index == 0,
-                                            child: SvgPicture.asset(
-                                              article["img"],
-                                              fit: BoxFit.cover,
-                                              width: 48,
-                                              height: 48,
+                                  );
+                                },
+                                child: Container(
+                                  height: 64,
+                                  decoration: BoxDecoration(
+                                    border: index != 0 &&
+                                            index != widget.list.length - 1
+                                        ? Border(
+                                            bottom: BorderSide(
+                                              color: Colors.grey,
+                                              width: 0.2,
                                             ),
+                                          )
+                                        : (null),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 16.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Visibility(
+                                                visible: index == 0,
+                                                child: SvgPicture.asset(
+                                                  article["img"],
+                                                  fit: BoxFit.cover,
+                                                  width: 48,
+                                                  height: 48,
+                                                ),
+                                              ),
+                                              index == 0
+                                                  ? ListTitleText(
+                                                      text:
+                                                          '${article["chapter"]}. ')
+                                                  : Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 24.0),
+                                                      child: ListTitleText(
+                                                          text:
+                                                              '${article["chapter"]}. '),
+                                                    ),
+                                              Container(
+                                                  width: 182,
+                                                  child: ListTitleText(
+                                                      text: article["title"])),
+                                            ],
                                           ),
-                                          Container(
-                                            child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                ListTitleText(
-                                                    text:
-                                                        '${article["chapter"]}. '),
-                                                Container(
-                                                    width: 182,
-                                                    child: ListTitleText(
-                                                        text:
-                                                            article["title"])),
-                                              ],
-                                            ),
-                                          ),
-                                          Icon(
-                                            FontAwesomeIcons.chevronRight,
-                                            color: Colors.grey,
-                                            size: 14,
-                                          ),
-                                        ],
-                                      ),
+                                        ),
+                                        Icon(
+                                          FontAwesomeIcons.chevronRight,
+                                          color: Colors.grey,
+                                          size: 14,
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
