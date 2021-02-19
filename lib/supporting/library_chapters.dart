@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/supporting/articles.dart';
 import 'package:flutter_markdown/supporting/articlesEN.dart';
-import 'package:flutter_markdown/supporting/library_main_controller.dart';
 import 'package:flutter_markdown/supporting/read_articles.dart';
-import 'package:flutter_markdown/supporting/size.dart';
-import 'package:flutter_markdown/supporting/typography.dart';
+import 'package:Hypertonie_v2/controllers/system/size.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:Hypertonie_v2/views/widgets/common_widgets/typography.dart';
+import 'package:Hypertonie_v2/controllers/library/library_main_controller.dart';
 
 class LibraryChapters extends StatefulWidget {
   LibraryChapters(
