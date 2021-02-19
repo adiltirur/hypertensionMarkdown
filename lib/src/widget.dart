@@ -67,6 +67,7 @@ abstract class MarkdownWidget extends StatefulWidget {
     @required this.data,
     this.selectable = false,
     @required this.language,
+    @required this.chapter,
     this.styleSheet,
     this.styleSheetTheme = MarkdownStyleSheetBaseTheme.material,
     this.syntaxHighlighter,
@@ -95,6 +96,7 @@ abstract class MarkdownWidget extends StatefulWidget {
   /// Multi Lnagugage Selection
   ///
   final String language;
+  final chapter;
   final MarkdownStyleSheet styleSheet;
 
   /// Setting to specify base theme for MarkdownStyleSheet
@@ -213,6 +215,7 @@ class _MarkdownWidgetState extends State<MarkdownWidget>
                   builder: (context) => OnClickLibrary(
                       rank: articlesEN[int.parse(href)]["rank"],
                       date: date,
+                      chapter: widget.chapter,
                       title: articlesEN[int.parse(href)]["title"],
                       image: articlesEN[int.parse(href)]["img"],
                       content: articlesEN[int.parse(href)]["content"],
@@ -228,6 +231,7 @@ class _MarkdownWidgetState extends State<MarkdownWidget>
                   builder: (context) => OnClickLibrary(
                       rank: articlesEN[int.parse(href)]["rank"],
                       date: date,
+                      chapter: widget.chapter,
                       title: articles[int.parse(href)]["title"],
                       image: articles[int.parse(href)]["img"],
                       content: articles[int.parse(href)]["content"],
@@ -271,6 +275,7 @@ class MarkdownBody extends MarkdownWidget {
     Key key,
     @required String data,
     @required String language,
+    @required chapter,
     bool selectable = false,
     MarkdownStyleSheet styleSheet,
     MarkdownStyleSheetBaseTheme styleSheetTheme,
@@ -286,6 +291,7 @@ class MarkdownBody extends MarkdownWidget {
           key: key,
           data: data,
           language: language,
+          chapter: chapter,
           selectable: selectable,
           styleSheet: styleSheet,
           styleSheetTheme: styleSheetTheme,
@@ -330,6 +336,7 @@ class Markdown extends MarkdownWidget {
     Key key,
     @required String data,
     @required String language,
+    @required chapter,
     bool selectable = false,
     MarkdownStyleSheet styleSheet,
     MarkdownStyleSheetBaseTheme styleSheetTheme,
@@ -346,6 +353,7 @@ class Markdown extends MarkdownWidget {
           key: key,
           data: data,
           language: language,
+          chapter: chapter,
           selectable: selectable,
           styleSheet: styleSheet,
           styleSheetTheme: styleSheetTheme,
