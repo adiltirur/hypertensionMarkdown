@@ -113,7 +113,7 @@ class _LibraryChaptersState extends State<LibraryChapters> {
         buildDefaultAppBar: buildAppBar,
         setState: setState,
         onChanged: onSearchTextChanged,
-        controller:controller,
+        controller: controller,
         showClearButton: true,
         onClosed: () {
           if (stateController.search.value == true) {
@@ -156,7 +156,8 @@ class _LibraryChaptersState extends State<LibraryChapters> {
       ), */
       body: Padding(
           padding: const EdgeInsets.only(top: 16.0, left: 16, right: 16),
-          child: controller.text.length == 0?Container(
+          child: controller.text.length == 0
+              ? Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: Colors.white,
@@ -225,14 +226,13 @@ class _LibraryChaptersState extends State<LibraryChapters> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                             Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              left: 24.0),
-                                                      child: ListTitleText(
-                                                          text:
-                                                              '${article["chapter"]}. '),
-                                                    ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 24.0),
+                                                child: ListTitleText(
+                                                    text:
+                                                        '${article["chapter"]}. '),
+                                              ),
                                               Container(
                                                   width: 182,
                                                   child: ListTitleText(
@@ -261,125 +261,124 @@ class _LibraryChaptersState extends State<LibraryChapters> {
                       );
                     },
                   ),
-                ),
-          
-          
-           _searchResult.length == 0
-              ? Container(
-                                                        child: Center(
-                                                          child: SubHeading(
-                                                              text:
-                                                                  'emptySearch'
-                                                                      .tr),
-                                                        ),
-                                                      )
-              : Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.white,
-                      border: Border.all(color: Colors.grey)),
-                  child: ListView.builder(
-                    padding: EdgeInsets.all(4),
-                    primary: false,
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemCount: articles == null ? 0 : _searchResult.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      Map article;
-                      if (widget.language == 'en') {
-                        article = articlesEN[widget.list[index]];
-                      } else if (widget.language == 'de') {
-                        article = articles[widget.list[index]];
-                      }
-                      Map art = {
-                        'title': _searchResult[index].title,
-                        'chapter': _searchResult[index].chapter,
-                        'img': _searchResult[index].img,
-                        'rank': _searchResult[index].id,
-                        'content': _searchResult[index].content,
-                        'block': _searchResult[index].block,
-                      };
+                )
+              : _searchResult.length == 0
+                  ? Container(
+                      child: Center(
+                        child: SubHeading(text: 'emptySearch'.tr),
+                      ),
+                    )
+                  : Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.white,
+                          border: Border.all(color: Colors.grey)),
+                      child: ListView.builder(
+                        padding: EdgeInsets.all(4),
+                        primary: false,
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        itemCount: articles == null ? 0 : _searchResult.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          Map article;
+                          if (widget.language == 'en') {
+                            article = articlesEN[widget.list[index]];
+                          } else if (widget.language == 'de') {
+                            article = articles[widget.list[index]];
+                          }
+                          Map art = {
+                            'title': _searchResult[index].title,
+                            'chapter': _searchResult[index].chapter,
+                            'img': _searchResult[index].img,
+                            'rank': _searchResult[index].id,
+                            'content': _searchResult[index].content,
+                            'block': _searchResult[index].block,
+                          };
 
-                      return Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16),
-                                child: GestureDetector(
-                                  onTap: () async {
-                                    var date =
-                                        await ReadDate.getDate(article['rank']);
-                                    print(date);
+                          return Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 16),
+                                    child: GestureDetector(
+                                      onTap: () async {
+                                        var date = await ReadDate.getDate(
+                                            article['rank']);
+                                        print(date);
 
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) {
-                                          return OnClickLibrary(
-                                              chapter: widget.chapter,
-                                              language: widget.language,
-                                              rank: art['rank'],
-                                              title: art["title"],
-                                              image: art["img"],
-                                              date: date,
-                                              content: art["content"],
-                                              block: art["block"]);
-                                        },
-                                      ),
-                                    );
-                                  },
-                                  child: Container(
-                                    height: 64,
-                                    decoration: BoxDecoration(
-                                      border: index != 0 &&
-                                              index != widget.list.length - 1
-                                          ? Border(
-                                              bottom: BorderSide(
-                                                color: Colors.grey,
-                                                width: 0.2,
-                                              ),
-                                            )
-                                          : (null),
-                                    ),
-                                    child: Padding(
-                                      padding:
-                                          const EdgeInsets.only(right: 16.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Container(
-                                              width: ScreenSize.convertWidth(
-                                                  index == 0 ? 209 : 278,
-                                                  context),
-                                              child: ListTitleText(
-                                                  text:
-                                                      '${_searchResult[index].chapter} ${_searchResult[index].title}')),
-                                          Icon(
-                                            FontAwesomeIcons.chevronRight,
-                                            color: Colors.grey,
-                                            size: 14,
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) {
+                                              return OnClickLibrary(
+                                                  chapter: widget.chapter,
+                                                  language: widget.language,
+                                                  rank: art['rank'],
+                                                  title: art["title"],
+                                                  image: art["img"],
+                                                  date: date,
+                                                  content: art["content"],
+                                                  block: art["block"]);
+                                            },
                                           ),
-                                        ],
+                                        );
+                                      },
+                                      child: Container(
+                                        height: 64,
+                                        decoration: BoxDecoration(
+                                          border: index != 0 &&
+                                                  index !=
+                                                      widget.list.length - 1
+                                              ? Border(
+                                                  bottom: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 0.2,
+                                                  ),
+                                                )
+                                              : (null),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              right: 16.0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Container(
+                                                  width:
+                                                      ScreenSize.convertWidth(
+                                                          index == 0
+                                                              ? 209
+                                                              : 278,
+                                                          context),
+                                                  child: ListTitleText(
+                                                      text:
+                                                          '${_searchResult[index].chapter} ${_searchResult[index].title}')),
+                                              Icon(
+                                                FontAwesomeIcons.chevronRight,
+                                                color: Colors.grey,
+                                                size: 14,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
+                                  Visibility(
+                                      visible: index == 0,
+                                      child: Divider(
+                                        thickness: 0.2,
+                                      )),
+                                ],
                               ),
-                              Visibility(
-                                  visible: index == 0,
-                                  child: Divider(
-                                    thickness: 0.2,
-                                  )),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                )),
+                            ),
+                          );
+                        },
+                      ),
+                    )),
     );
   }
 }
