@@ -113,7 +113,7 @@ class _LibraryChaptersState extends State<LibraryChapters> {
         buildDefaultAppBar: buildAppBar,
         setState: setState,
         onChanged: onSearchTextChanged,
-        controller:controller
+        controller:controller,
         showClearButton: true,
         onClosed: () {
           if (stateController.search.value == true) {
@@ -261,7 +261,7 @@ class _LibraryChaptersState extends State<LibraryChapters> {
                       );
                     },
                   ),
-                )
+                ),
           
           
            _searchResult.length == 0
