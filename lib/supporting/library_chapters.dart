@@ -84,32 +84,25 @@ class _LibraryChaptersState extends State<LibraryChapters> {
 
   AppBar buildAppBar(BuildContext context) {
     return new AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            GestureDetector(
-              onTap: () => Navigator.pop(context),
-              child: RegularText(
-                text: 'backButton'.tr,
-                color: Theme.of(context).primaryColor,
-              ),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: RegularText(
+              text: 'backButton'.tr,
+              color: Theme.of(context).primaryColor,
             ),
-            Heading(
-              text: '${'libraryChapterTab'.tr} ${widget.chapter}',
-              fontSize: 17,
-            ),
-            SizedBox(
-              width: 16,
-            ),
-          ],
-        ),
-        automaticallyImplyLeading: false,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: searchBar.getSearchAction(context),
-          )
-        ]);
+          ),
+          Heading(
+            text: '${'libraryChapterTab'.tr} ${widget.chapter}',
+            fontSize: 17,
+          ),
+          searchBar.getSearchAction(context)
+        ],
+      ),
+      automaticallyImplyLeading: false,
+    );
   }
 
   _LibraryChaptersState() {
@@ -120,6 +113,7 @@ class _LibraryChaptersState extends State<LibraryChapters> {
         buildDefaultAppBar: buildAppBar,
         setState: setState,
         onChanged: onSearchTextChanged,
+        controller:controller
         showClearButton: true,
         onClosed: () {
           if (stateController.search.value == true) {
@@ -162,8 +156,7 @@ class _LibraryChaptersState extends State<LibraryChapters> {
       ), */
       body: Padding(
           padding: const EdgeInsets.only(top: 16.0, left: 16, right: 16),
-          child: _searchResult.length == 0
-              ? Container(
+          child: controller.text.length == 0?Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: Colors.white,
@@ -212,8 +205,7 @@ class _LibraryChaptersState extends State<LibraryChapters> {
                                 child: Container(
                                   height: 64,
                                   decoration: BoxDecoration(
-                                    border: index != 0 &&
-                                            index != widget.list.length - 1
+                                    border: index != widget.list.length - 1
                                         ? Border(
                                             bottom: BorderSide(
                                               color: Colors.grey,
@@ -233,20 +225,7 @@ class _LibraryChaptersState extends State<LibraryChapters> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Visibility(
-                                                visible: index == 0,
-                                                child: SvgPicture.asset(
-                                                  article["img"],
-                                                  fit: BoxFit.cover,
-                                                  width: 48,
-                                                  height: 48,
-                                                ),
-                                              ),
-                                              index == 0
-                                                  ? ListTitleText(
-                                                      text:
-                                                          '${article["chapter"]}. ')
-                                                  : Padding(
+                                             Padding(
                                                       padding:
                                                           const EdgeInsets.only(
                                                               left: 24.0),
@@ -283,6 +262,17 @@ class _LibraryChaptersState extends State<LibraryChapters> {
                     },
                   ),
                 )
+          
+          
+           _searchResult.length == 0
+              ? Container(
+                                                        child: Center(
+                                                          child: SubHeading(
+                                                              text:
+                                                                  'emptySearch'
+                                                                      .tr),
+                                                        ),
+                                                      )
               : Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
