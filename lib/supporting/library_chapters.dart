@@ -71,8 +71,10 @@ class _LibraryChaptersState extends State<LibraryChapters> {
     print(text.toLowerCase());
 
     articleDetails.forEach((articleDetail) {
-      if (articleDetail.content.toLowerCase().contains(text.toLowerCase()))
+      if ((articleDetail.content.toLowerCase().contains(text.toLowerCase())) ||
+          (articleDetail.title.toLowerCase().contains(text.toLowerCase()))) {
         _searchResult.add(articleDetail);
+      }
     });
 
     setState(() {});
@@ -328,9 +330,9 @@ class _LibraryChaptersState extends State<LibraryChapters> {
                                       child: Container(
                                         height: 64,
                                         decoration: BoxDecoration(
-                                          border: index != 0 &&
+                                          border: index != 0 ||
                                                   index !=
-                                                      widget.list.length - 1
+                                                      _searchResult.length - 1
                                               ? Border(
                                                   bottom: BorderSide(
                                                     color: Colors.grey,
