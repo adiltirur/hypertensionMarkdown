@@ -319,7 +319,7 @@ Die Hormone Östradiol und Progesteron haben bei Frauen im gebärfähigen Alter 
   },
   {
     "img": "assets/images/articles/3_2_2_1.svg",
-    "title": " Blutdruck bei jungen Frauen im gebärfähigen Alter",
+    "title": "Blutdruck bei jungen Frauen im gebärfähigen Alter",
     "block":
         "Bei jungen Frauen ist Bluthochdruck seltener als bei Männern, allerdings kann bei einigen Frauen der Blutdruck infolge der Einnahme oraler Kontrazeptiva ansteigen.",
     "content": """

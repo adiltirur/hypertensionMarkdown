@@ -1,13 +1,13 @@
 var articlesEN = [
   {
-    "img": "assets/lib/images/images/articles/1_0.svg",
+    "img": "assets/lib/images/articles/1_0.svg",
     "title": "welcome",
     "content": "null",
     "rank": "999",
     "chapter": "1.0"
   },
   {
-    "img": "assets/images/images/articles/1.svg",
+    "img": "assets/images/articles/1.svg",
     "title": "Blood Pressure / Hypertension",
     "block": "",
     "content":
@@ -27,7 +27,7 @@ var articlesEN = [
     "chapter": "1"
   },
   {
-    "img": "assets/images/images/articles/1_1.svg",
+    "img": "assets/images/articles/1_1_EN.svg",
     "title": "Blood pressure fluctuations and blood pressure variability",
     "block":
         "Blood pressure often shows slightly different values; such fluctuations are within certain limits quite normal and important for normal circulation regulation.",
@@ -39,7 +39,7 @@ These changes in blood pressure happen very quickly and are a prerequisite for u
     "chapter": "1.1"
   },
   {
-    "img": "assets/images/images/articles/1_2.svg",
+    "img": "assets/images/articles/1_2.svg",
     "title": "Significance of hypertension / high blood pressure",
     "block":
         "Depending on how strongly our heart pumps and how elastic our arteries are, the result is a rather low or rather high blood pressure.",
@@ -51,7 +51,7 @@ Blood pressure is the pressure that the blood exerts on the walls of the blood v
     "chapter": "1.2"
   },
   {
-    "img": "assets/images/images/articles/1_3.svg",
+    "img": "assets/images/articles/1_3_EN.svg",
     "title": "Causes of Hypertension",
     "block":
         "A so-called primary hypertension exists if there is no other disease that could be the cause. Heredity and lifestyle often play a role here. However, some diseases lead to high blood pressure - in this case it is called secondary hypertension.",
@@ -65,7 +65,7 @@ The [secondary types of hypertension](75) affect only about 10% of all patients.
     "chapter": "1.3"
   },
   {
-    "img": "assets/images/images/articles/1_4.svg",
+    "img": "assets/images/articles/1_4_EN.svg",
     "title": "Symptoms of Hypertension",
     "block":
         "In most cases, high blood pressure does not cause any complaints; however, if it has persisted for a long time and has led to organ damage, severe symptoms can occur.",
@@ -77,7 +77,7 @@ The [secondary types of hypertension](75) affect only about 10% of all patients.
     "chapter": "1.4"
   },
   {
-    "img": "assets/images/images/articles/1_5.svg",
+    "img": "assets/images/articles/1_5_EN.svg",
     "title": "Consequences of Hypertension",
     "block": "High blood pressure leads to various serious diseases over time.",
     "content": """
@@ -88,7 +88,7 @@ Also [heart attack](139) and vascular damage, e.g. [aortic aneurysm](148) (a dil
     "chapter": "1.5"
   },
   {
-    "img": "assets/images/images/articles/1_6.svg",
+    "img": "assets/images/articles/1_6.svg",
     "title": "Diagnostics",
     "block":
         "Hypertension is only diagnosed if the measured values are higher than the defined limits in multiple measurements.",
@@ -104,7 +104,7 @@ Blood pressure limits (the first value indicates systolic, the second [diastolic
     "chapter": "1.6"
   },
   {
-    "img": "assets/images/images/articles/1_7.svg",
+    "img": "assets/images/articles/1_7.svg",
     "title": "Self measurement of blood pressure",
     "block": "",
     "content":
@@ -113,7 +113,7 @@ Blood pressure limits (the first value indicates systolic, the second [diastolic
     "chapter": "1.7"
   },
   {
-    "img": "assets/images/images/articles/2_EN.svg",
+    "img": "assets/images/articles/2_EN.svg",
     "title": "Hypertensive crisis / Hypertensive emergency",
     "block":
         "Temporarily significantly increased blood pressure values without symptoms are called hypertensive crisis. A hypertensive emergency, on the other hand, exists when elevated blood pressure is accompanied by symptoms; in this case, rapid treatment is necessary.",
@@ -146,7 +146,7 @@ These mostly symptom-free or low symptom blood pressure peaks do not meet the cr
     "chapter": "2",
   },
   {
-    "img": "assets/images/images/articles/3_EN.svg",
+    "img": "assets/images/articles/3_EN.svg",
     "title": "Causes of Hypertension",
     "block":
         "There are many factors that can permanently increase blood pressure and lead to hypertension. These factors can vary greatly from one individual to another and are described in more detail in the following articles.",
@@ -169,7 +169,7 @@ These mostly symptom-free or low symptom blood pressure peaks do not meet the cr
     "chapter": "3"
   },
   {
-    "img": "assets/images/images/articles/3_1.svg",
+    "img": "assets/images/articles/3_1.svg",
     "title": "Blood Pressure and Age",
     "block":
         "With increasing age the systolic blood pressure in particular rises. An effective therapy for high blood pressure is also important in old age.",
@@ -188,7 +188,7 @@ However, it is important to know that the older organism reacts more sensitively
     "chapter": "3.1"
   },
   {
-    "img": "assets/images/images/articles/3_1_1.svg",
+    "img": "assets/images/articles/3_1_1.svg",
     "title": "Blood Pressure in Old Age",
     "block": "",
     "content": """
@@ -204,7 +204,7 @@ As blood pressure rises with age, the frequency of systolic hypertension increas
     "chapter": "3.1.1"
   },
   {
-    "img": "assets/images/images/articles/3_1_2.svg",
+    "img": "assets/images/articles/3_1_2.svg",
     "title": "Middle-Aged Blood Pressure",
     "block":
         "Especially in middle age, many factors come together (overweight, decreasing physical activity, higher stress in everyday life, etc.) that promote high blood pressure.",
@@ -231,7 +231,7 @@ Chronic stress, e.g. at work and/or in the family, in combination with lack of s
     "chapter": "3.1.2"
   },
   {
-    "img": "assets/images/images/articles/3_1_3.svg",
+    "img": "assets/images/articles/3_1_3.svg",
     "title": "Blood pressure in children and adolescents",
     "block":
         "If high blood pressure is diagnosed in children or adolescents, organ diseases are often the cause. The so-called juvenile systolic hypertension, on the other hand, is harmless.",
@@ -248,7 +248,7 @@ The so-called [juvenile systolic hypertension (ISH)](71) in adolescents and youn
     "chapter": "3.1.3"
   },
   {
-    "img": "assets/images/images/articles/3_2_EN.svg",
+    "img": "assets/images/articles/3_2_EN.svg",
     "title": "Blood Pressure and Sex",
     "block": "",
     "content": """
@@ -267,7 +267,7 @@ High blood pressure is more common in men up to the age of 60 than in women. Aft
     "chapter": "3.2"
   },
   {
-    "img": "assets/images/images/articles/3_2_1.svg",
+    "img": "assets/images/articles/3_2_1.svg",
     "title": "Blood Pressure in Men",
     "block": "",
     "content": """
@@ -277,7 +277,7 @@ Men are significantly more frequently affected than women, especially in younger
     "chapter": "3.2.1"
   },
   {
-    "img": "assets/images/images/articles/3_2_1_1.svg",
+    "img": "assets/images/articles/3_2_1_1.svg",
     "title": "Blood Pressure in Young Men",
     "block":
         "All forms of hypertension occur in 18- to 50-year-old men; causes are usually hereditary and lifestyle factors.",
@@ -292,7 +292,7 @@ The situation is completely different with juvenile ISH: [isolated systolic hype
     "chapter": "3.2.1.1"
   },
   {
-    "img": "assets/images/images/articles/3_2_1_2.svg",
+    "img": "assets/images/articles/3_2_1_2.svg",
     "title": "Blood Pressure in Older Men",
     "block":
         "Older men are particularly affected by systolic hypertension due to vascular aging (stiffening). Isolated systolic hypertension](70) in old age (ISH) affects about one in five people over the age of 65.",
@@ -301,7 +301,7 @@ The situation is completely different with juvenile ISH: [isolated systolic hype
     "chapter": "3.2.1.2"
   },
   {
-    "img": "assets/images/images/articles/3_2_2.svg",
+    "img": "assets/images/articles/3_2_2.svg",
     "title": "Blood pressure in women",
     "block":
         "Women, especially after the menopause, suffer more frequently from high blood pressure. This is because the protective effect of the sex hormones is then lost, which also increases the risk of heart disease.",
@@ -316,7 +316,7 @@ The hormones estradiol and progesterone have a certain blood pressure-lowering e
     "chapter": "3.2.2"
   },
   {
-    "img": "assets/images/images/articles/3_2_2_1.svg",
+    "img": "assets/images/articles/3_2_2_1.svg",
     "title": " Blood pressure in young women of childbearing age",
     "block":
         "High blood pressure is less common in young women than in men, but in some women blood pressure can rise as a result of taking oral contraceptives.",
@@ -327,7 +327,7 @@ High blood pressure is less common in young, slim women, who do not smoke, exerc
     "chapter": "3.2.2.1"
   },
   {
-    "img": "assets/images/images/articles/3_2_2_2.svg",
+    "img": "assets/images/articles/3_2_2_2.svg",
     "title": "Blood pressure after menopause",
     "block":
         "The hormonal change leads to various changes in the circulation and metabolism. It comes more easily and more frequently to [weight gain](26) and blood pressure increase.",
@@ -336,7 +336,7 @@ High blood pressure is less common in young, slim women, who do not smoke, exerc
     "chapter": "3.2.2.2"
   },
   {
-    "img": "assets/images/images/articles/3_3.svg",
+    "img": "assets/images/articles/3_3.svg",
     "title": "Blood pressure for tall and short people",
     "block": "Height plays a certain role in the development of hypertension.",
     "content": """
@@ -349,7 +349,7 @@ High blood pressure is less common in young, slim women, who do not smoke, exerc
     "chapter": "3.3"
   },
   {
-    "img": "assets/images/images/articles/3_3_1.svg",
+    "img": "assets/images/articles/3_3_1.svg",
     "title": "Blood Pressure in tall people",
     "block":
         "Tall people suffer less frequently from high blood pressure than short people.",
@@ -362,7 +362,7 @@ Body height plays a certain role in the development of hypertension. Tall people
     "chapter": "3.3.1"
   },
   {
-    "img": "assets/images/images/articles/3_3_2.svg",
+    "img": "assets/images/articles/3_3_2.svg",
     "title": "Blood pressure in short people",
     "block": "",
     "content": """
@@ -371,7 +371,7 @@ In older, shorter people with increased vascular stiffness, the shorter aorta pl
     "chapter": "3.3.2"
   },
   {
-    "img": "assets/images/images/articles/3_4_EN.svg",
+    "img": "assets/images/articles/3_4_EN.svg",
     "title": "Blood pressure and weight",
     "block": "Overweight is a significant risk factor for high blood pressure.",
     "content": """
@@ -390,7 +390,7 @@ However, being overweight is the most important and most common trigger for the 
     "chapter": "3.4"
   },
   {
-    "img": "assets/images/images/articles/3_4_1_EN.svg",
+    "img": "assets/images/articles/3_4_1_EN.svg",
     "title": "Blood pressure in overweight people",
     "block": "",
     "content": """
@@ -399,7 +399,7 @@ In about half of all hypertensive patients, overweight or obesity plays the main
     "chapter": "3.4.1"
   },
   {
-    "img": "assets/images/images/articles/3_4_2_EN.svg",
+    "img": "assets/images/articles/3_4_2_EN.svg",
     "title": "Blood pressure in people of normal weight",
     "block":
         "In normal-weight hypertensive patients, factors other than body weight play an important role in the development of hypertension, such as genetic factors, stress, diet, lack of exercise",
@@ -408,7 +408,7 @@ In about half of all hypertensive patients, overweight or obesity plays the main
     "chapter": "3.4.2"
   },
   {
-    "img": "assets/images/images/articles/3_4_3_EN.svg",
+    "img": "assets/images/articles/3_4_3_EN.svg",
     "title": "Blood Pressure in Underweight People",
     "block": "",
     "content":
@@ -417,7 +417,7 @@ In about half of all hypertensive patients, overweight or obesity plays the main
     "chapter": "3.4.3"
   },
   {
-    "img": "assets/images/images/articles/3_4_4.svg",
+    "img": "assets/images/articles/3_4_4.svg",
     "title": "Body Fat Distribution",
     "block":
         "It is not only the absolute body weight that matters, but also the distribution of the fat tissue in the body.",
@@ -428,7 +428,7 @@ It is referred to as a female fat distribution pattern, with emphasis on the hip
     "chapter": "3.4.4"
   },
   {
-    "img": "assets/images/images/articles/3_5.svg",
+    "img": "assets/images/articles/3_5.svg",
     "title": "Blood pressure and heredity",
     "block":
         "Blood relatives of people with hypertension are more likely to develop hypertension during their lifetime. Twin research has also provided further arguments for the inheritance of hypertension.",
@@ -442,7 +442,7 @@ It is referred to as a female fat distribution pattern, with emphasis on the hip
     "chapter": "3.5"
   },
   {
-    "img": "assets/images/images/articles/3_5_1.svg",
+    "img": "assets/images/articles/3_5_1.svg",
     "title": "Family disposition / inheritance",
     "block":
         "Hereditary factors play a role in about half of the patients with high blood pressure.",
@@ -453,7 +453,7 @@ High blood pressure is more common in certain families. Often one or even both p
     "chapter": "3.5.1"
   },
   {
-    "img": "assets/images/images/articles/3_5_2.svg",
+    "img": "assets/images/articles/3_5_2.svg",
     "title": "Salt Sensitivity",
     "block":
         "Some people are particularly sensitive to salt, i.e. they are much more likely to develop hypertension than others if they consume a lot of salt.",
@@ -464,7 +464,7 @@ We all eat 3 to 5 times as much salt daily as our body needs to maintain vital f
     "chapter": "3.5.2"
   },
   {
-    "img": "assets/images/images/articles/3_6.svg",
+    "img": "assets/images/articles/3_6.svg",
     "title": "Blood Pressure and Exercise",
     "block":
         "Physical inactivity and lack of exercise are very important risk factors for the development of hypertension, especially in combination with overweight.",
@@ -481,7 +481,7 @@ We all eat 3 to 5 times as much salt daily as our body needs to maintain vital f
     "chapter": "3.6"
   },
   {
-    "img": "assets/images/images/articles/3_6_1.svg",
+    "img": "assets/images/articles/3_6_1.svg",
     "title": "Physical activity and sports",
     "block":
         "Sufficient physical activity protects against overweight and high blood pressure.",
@@ -494,7 +494,7 @@ The blood pressure-lowering effect of physical activity can be easily checked by
     "chapter": "3.6.1"
   },
   {
-    "img": "assets/images/images/articles/3_6_1_1.svg",
+    "img": "assets/images/articles/3_6_1_1.svg",
     "title": "Endurance or strength training?",
     "block":
         "For healthy blood pressure, endurance sports in moderate intensity are particularly effective.",
@@ -507,7 +507,7 @@ Healthier for the heart and blood vessels are therefore sports involving enduran
     "chapter": "3.6.1.1"
   },
   {
-    "img": "assets/images/images/articles/3_6_1_2.svg",
+    "img": "assets/images/articles/3_6_1_2.svg",
     "title": "Team Sport?",
     "block":
         "Beware of competition situations and physical exertion without sufficient warm-up.",
@@ -522,7 +522,7 @@ The situation is made worse in many cases by the fact that a large proportion of
     "chapter": "3.6.1.2"
   },
   {
-    "img": "assets/images/images/articles/3_6_1_3.svg",
+    "img": "assets/images/articles/3_6_1_3.svg",
     "title": "Blood pressure medication and sports",
     "block":
         "Physical activity is also important for hypertensive patients who have healthy blood pressure values as a result of their therapy.",
@@ -533,7 +533,7 @@ Medicinally treated hypertensive patients who show normal blood pressure values 
     "chapter": "3.6.1.3"
   },
   {
-    "img": "assets/images/images/articles/3_6_1_4.svg",
+    "img": "assets/images/articles/3_6_1_4.svg",
     "title": "Correct breathing during exercise",
     "block":
         "Calm and even and deep breathing is important; pressurized breathing, on the other hand, increases the blood pressure.",
@@ -552,7 +552,7 @@ Pressed breathing is often used not only for high exertion, but also for exercis
     "chapter": "3.6.1.4"
   },
   {
-    "img": "assets/images/images/articles/3_7.svg",
+    "img": "assets/images/articles/3_7.svg",
     "title": "Blood Pressure and Stress",
     "block":
         "Stress in any form causes the blood pressure to rise; stress reduction therefore clearly contributes to a healthy blood pressure.",
@@ -573,7 +573,7 @@ Today there is no longer any doubt that psychological factors play a major role 
     "chapter": "3.7"
   },
   {
-    "img": "assets/images/images/articles/3_7_1_EN.svg",
+    "img": "assets/images/articles/3_7_1_EN.svg",
     "title": "What is stress? Eustress vs. distress",
     "block": "Prolonged stress can lead to serious health problems.",
     "content":
@@ -588,7 +588,7 @@ The term **Eustress** refers to the "healthy" everyday stress that is managed (f
     "chapter": "3.7.1"
   },
   {
-    "img": "assets/images/images/articles/3_7_2.svg",
+    "img": "assets/images/articles/3_7_2.svg",
     "title": "Stress Reaction",
     "block":
         "The response to prolonged stress can be headaches for one person, high blood pressure for another.",
@@ -603,7 +603,7 @@ The "advantage" of headaches, stomach aches or heart pain in or after a stressfu
     "chapter": "3.7.2"
   },
   {
-    "img": "assets/images/images/articles/3_7_3.svg",
+    "img": "assets/images/articles/3_7_3.svg",
     "title": "Do we need stress?",
     "block":
         "The stress reactions that were originally vital for survival are nowadays mostly unnecessary and harmful.",
@@ -616,7 +616,7 @@ These old stress reactions have been deeply rooted in us for 1000 generations as
     "chapter": "3.7.3"
   },
   {
-    "img": "assets/images/images/articles/3_8.svg",
+    "img": "assets/images/articles/3_8_EN.svg",
     "title": "Blood Pressure and Psyche: High Pressure Personality?",
     "block":
         "People with high blood pressure often have a very negative and critical view of themselves and tend to have a strong tendency to control themselves.",
@@ -640,7 +640,7 @@ Time pressure and impatience are two factors that have been identified as long-t
     "chapter": "3.8"
   },
   {
-    "img": "assets/images/images/articles/3_8_1.svg",
+    "img": "assets/images/articles/3_8_1.svg",
     "title": "Type A",
     "block": "",
     "content": """
@@ -650,7 +650,7 @@ The following pattern is called Type A behavior: In people of this type the main
     "chapter": "3.8.1"
   },
   {
-    "img": "assets/images/images/articles/3_8_2.svg",
+    "img": "assets/images/articles/3_8_2.svg",
     "title": "Type B",
     "block": "",
     "content": """
@@ -660,7 +660,7 @@ As type B behavior one would characterize the dominant opposite behavior compare
     "chapter": "3.8.2"
   },
   {
-    "img": "assets/images/images/articles/3_9.svg",
+    "img": "assets/images/articles/3_9.svg",
     "title": "Social environment and environment",
     "block": "",
     "content": """
@@ -676,7 +676,7 @@ Problems in family, circle of friends or at work (social environment) as well as
     "chapter": "3.9"
   },
   {
-    "img": "assets/images/images/articles/3_9_1.svg",
+    "img": "assets/images/articles/3_9_1.svg",
     "title": "Social Environment",
     "block":
         "How one resides, lives and works can have a significant effect on blood pressure",
@@ -687,7 +687,7 @@ The social environment mainly includes family, job and circle of friends. Many f
     "chapter": "3.9.1"
   },
   {
-    "img": "assets/images/images/articles/3_9_2.svg",
+    "img": "assets/images/articles/3_9_2.svg",
     "title": "Environment and occupation",
     "block":
         "Heat, noise, toxins or even permanent shift work are harmful environmental factors that we can only influence to a limited extent.",
@@ -1068,7 +1068,7 @@ A particular constellation of hypertension has only been described in recent yea
     "chapter": "5.1.5"
   },
   {
-    "img": "assets/images/articles/5_1_6.svg",
+    "img": "assets/images/articles/5_1_6_EN.svg",
     "title":
         "Practice hypertension: Situation-related increase in blood pressure in the practice",
     "block": "",
@@ -1533,7 +1533,7 @@ With the ambulatory long-term blood pressure measurement and the self-measuremen
     "block":
         "Normally, blood pressure fluctuates over 24 hours: the values are highest in the morning and lowest in the middle of the night.",
     "content": """
-Blood pressure follows a very characteristic course in a 24-hour rhythm: The lowest values are usually during the night between 02.00 and 03.00 hours. In the morning hours the blood pressure then rises significantly. This rise begins shortly before getting up. The strongest rise in blood pressure occurs when getting up in the morning, with a peak around 09.00 o'clock. Many patients are surprised that their blood pressure is so high in the morning, for example when they measure their own blood pressure. In fact, the highest values are usually measured in the morning and mid-morning hours, by whatever method. If the rise in blood pressure in the morning is very steep and the blood pressure level is constantly too high, this can have serious consequences. Most strokes, heart attacks and other events, such as sudden cardiac death, severe cardiac arrhythmia, etc., accumulate in the morning hours, also with a peak around 09:00. Here there is a connection between poorly adjusted blood pressure and a steep rise in blood pressure in the morning and the occurrence of corresponding complications. It is therefore very important to take [medication](181) in such a way that the blood pressure is also well treated in the morning after getting up. This means that the blood pressure medication should be taken in the morning when getting up ("on the edge of the bed") so that the effect begins early.
+Blood pressure follows a very characteristic course in a 24-hour rhythm: The lowest values are usually during the night between 02.00 and 03.00 hours. In the morning hours the blood pressure then rises significantly. This rise begins shortly before getting up. The strongest rise in blood pressure occurs when getting up in the morning, with a peak around 9 o'clock. Many patients are surprised that their blood pressure is so high in the morning, for example when they measure their own blood pressure. In fact, the highest values are usually measured in the morning and mid-morning hours, by whatever method. If the rise in blood pressure in the morning is very steep and the blood pressure level is constantly too high, this can have serious consequences. Most strokes, heart attacks and other events, such as sudden cardiac death, severe cardiac arrhythmia, etc., accumulate in the morning hours, also with a peak around 09:00. Here there is a connection between poorly adjusted blood pressure and a steep rise in blood pressure in the morning and the occurrence of corresponding complications. It is therefore very important to take [medication](181) in such a way that the blood pressure is also well treated in the morning after getting up. This means that the blood pressure medication should be taken in the morning when getting up ("on the edge of the bed") so that the effect begins early.
 
 **The normal day-night rhythm of blood pressure leads to blood pressure fluctuations of 10-30 mmHg in the course of 24 hours. This shows how important the time of day is in the assessment of blood pressure values.**
 
@@ -2092,7 +2092,7 @@ Automatic blood pressure measurement can be affected by atrial fibrillation with
     "chapter": "10.4"
   },
   {
-    "img": "assets/images/articles/10_5.svg",
+    "img": "assets/images/articles/10_5_EN.svg",
     "title": "Hypertensive heart disease ",
     "block":
         "Too high blood pressure puts a great deal of strain on the heart muscle; in the long run, this leads to hypertensive heart disease.",
@@ -2130,7 +2130,7 @@ Systolic heart failure is the restricted pumping function of the heart muscle in
     "chapter": "10.6.1"
   },
   {
-    "img": "assets/images/articles/10_6_2.svg",
+    "img": "assets/images/articles/10_6_2_EN.svg",
     "title": "Diastolic heart failure",
     "block": "",
     "content": """
@@ -2181,7 +2181,7 @@ Elevated blood pressure can cause various vascular changes at the back of the ey
     "chapter": "10.10"
   },
   {
-    "img": "assets/images/articles/11.svg",
+    "img": "assets/images/articles/11_EN.svg",
     "title": "Concomitant diseases in hypertension",
     "block": "",
     "content": """
@@ -2883,7 +2883,7 @@ Yoga or meditation for the purpose of relaxation is often preferred by people wh
     "chapter": "13.3.5"
   },
   {
-    "img": "assets/images/articles/13_4.svg",
+    "img": "assets/images/articles/13_4_EN.svg",
     "title": "Biofeedback",
     "block":
         "Biofeedback provides the practitioner with feedback on breathing, pulse or other body reactions during certain exercises or behavior.",
