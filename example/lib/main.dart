@@ -99,15 +99,21 @@ void main() {
   runApp(
     MaterialApp(
       title: "Markdown Demo",
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Markdown Demo'),
-        ),
-        body: SafeArea(
-          child: Markdown(
-            selectable: true,
-            data: _markdownData,
-            imageDirectory: 'https://raw.githubusercontent.com',
+      home: Container(
+        color: Colors.white,
+        child: SafeArea(
+          bottom: false,
+          child: Scaffold(
+            appBar: AppBar(
+              title: const Text('Markdown Demo'),
+            ),
+            body: SafeArea(
+              child: Markdown(
+                selectable: true,
+                data: _markdownData,
+                imageDirectory: 'https://raw.githubusercontent.com',
+              ),
+            ),
           ),
         ),
       ),

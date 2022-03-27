@@ -57,166 +57,172 @@ class _OnClickLibraryState extends State<OnClickLibrary> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            GestureDetector(
-              onTap: () => Navigator.pop(context),
-              child: RegularText(
-                text: 'backButton'.tr,
-                color: Theme.of(context).primaryColor,
-              ),
-            ),
-            Heading(
-              text: 'libraryTitle'.tr,
-              fontSize: 17,
-            ),
-            GestureDetector(
-              onTap: () async {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return LibraryChapters(
-                        language: widget.language,
-                        chapter: widget.chapter,
-                        title: widget.title,
-                        list: (widget.chapter == '1')
-                            ? LibrarySupporting.chapter1
-                            : (widget.chapter == '2')
-                                ? LibrarySupporting.chapter2
-                                : (widget.chapter == '3')
-                                    ? LibrarySupporting.chapter3
-                                    : (widget.chapter == '4')
-                                        ? LibrarySupporting.chapter4
-                                        : (widget.chapter == '5')
-                                            ? LibrarySupporting.chapter5
-                                            : (widget.chapter == '6')
-                                                ? LibrarySupporting.chapter6
-                                                : (widget.chapter == '7')
-                                                    ? LibrarySupporting.chapter7
-                                                    : (widget.chapter == '8')
-                                                        ? LibrarySupporting
-                                                            .chapter8
-                                                        : (widget.chapter ==
-                                                                '9')
-                                                            ? LibrarySupporting
-                                                                .chapter9
-                                                            : (widget.chapter ==
-                                                                    '10')
-                                                                ? LibrarySupporting
-                                                                    .chapter10
-                                                                : (widget.chapter ==
-                                                                        '11')
-                                                                    ? LibrarySupporting
-                                                                        .chapter11
-                                                                    : (widget.chapter ==
-                                                                            '12')
-                                                                        ? LibrarySupporting
-                                                                            .chapter12
-                                                                        : (widget.chapter ==
-                                                                                '13')
-                                                                            ? LibrarySupporting.chapter13
-                                                                            : (widget.chapter == '14')
-                                                                                ? LibrarySupporting.chapter14
-                                                                                : (widget.chapter == '15')
-                                                                                    ? LibrarySupporting.chapter15
-                                                                                    : (widget.chapter == '16')
-                                                                                        ? LibrarySupporting.chapter16
-                                                                                        : (widget.chapter == '17')
-                                                                                            ? LibrarySupporting.chapter17
-                                                                                            : [],
-                      );
-                    },
+    return Container(
+      color: Colors.white,
+      child: SafeArea(
+        bottom: false,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: RegularText(
+                    text: 'backButton'.tr,
+                    color: Theme.of(context).primaryColor,
                   ),
-                );
-              },
-              child: RegularText(
-                text: 'libraryChapterTab'.tr,
-                color: Theme.of(context).primaryColor,
-              ),
+                ),
+                Heading(
+                  text: 'libraryTitle'.tr,
+                  fontSize: 17,
+                ),
+                GestureDetector(
+                  onTap: () async {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return LibraryChapters(
+                            language: widget.language,
+                            chapter: widget.chapter,
+                            title: widget.title,
+                            list: (widget.chapter == '1')
+                                ? LibrarySupporting.chapter1
+                                : (widget.chapter == '2')
+                                    ? LibrarySupporting.chapter2
+                                    : (widget.chapter == '3')
+                                        ? LibrarySupporting.chapter3
+                                        : (widget.chapter == '4')
+                                            ? LibrarySupporting.chapter4
+                                            : (widget.chapter == '5')
+                                                ? LibrarySupporting.chapter5
+                                                : (widget.chapter == '6')
+                                                    ? LibrarySupporting.chapter6
+                                                    : (widget.chapter == '7')
+                                                        ? LibrarySupporting
+                                                            .chapter7
+                                                        : (widget.chapter ==
+                                                                '8')
+                                                            ? LibrarySupporting
+                                                                .chapter8
+                                                            : (widget.chapter ==
+                                                                    '9')
+                                                                ? LibrarySupporting
+                                                                    .chapter9
+                                                                : (widget.chapter ==
+                                                                        '10')
+                                                                    ? LibrarySupporting
+                                                                        .chapter10
+                                                                    : (widget.chapter ==
+                                                                            '11')
+                                                                        ? LibrarySupporting
+                                                                            .chapter11
+                                                                        : (widget.chapter ==
+                                                                                '12')
+                                                                            ? LibrarySupporting.chapter12
+                                                                            : (widget.chapter == '13')
+                                                                                ? LibrarySupporting.chapter13
+                                                                                : (widget.chapter == '14')
+                                                                                    ? LibrarySupporting.chapter14
+                                                                                    : (widget.chapter == '15')
+                                                                                        ? LibrarySupporting.chapter15
+                                                                                        : (widget.chapter == '16')
+                                                                                            ? LibrarySupporting.chapter16
+                                                                                            : (widget.chapter == '17')
+                                                                                                ? LibrarySupporting.chapter17
+                                                                                                : [],
+                          );
+                        },
+                      ),
+                    );
+                  },
+                  child: RegularText(
+                    text: 'libraryChapterTab'.tr,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-        automaticallyImplyLeading: false,
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-          child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: ListView(
-                  children: <Widget>[
-                    Column(
+            automaticallyImplyLeading: false,
+          ),
+          body: Center(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+              child: Stack(
+                alignment: Alignment.bottomCenter,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: ListView(
                       children: <Widget>[
-                        buildMarkDown(context, widget.language),
-                        SizedBox(height: 80.0),
+                        Column(
+                          children: <Widget>[
+                            buildMarkDown(context, widget.language),
+                            SizedBox(height: 80.0),
+                          ],
+                        ),
                       ],
                     ),
-                  ],
-                ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0, top: 8.0),
-                  child: Container(
-                    height: 50,
-                    child: GestureDetector(
-                      onTap: () async {
-                        if (widget.date == 0) {
-                          await ReadDate.setDate(widget.rank);
-                        }
-
-                        Navigator.of(context).maybePop();
-                      },
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 16.0, top: 8.0),
                       child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(7.0),
-                          ),
-                          color: widget.date == 0
-                              ? Theme.of(context).primaryColor
-                              : Colors.green,
-                          border: Border.all(
-                              width: 3,
+                        height: 50,
+                        child: GestureDetector(
+                          onTap: () async {
+                            if (widget.date == 0) {
+                              await ReadDate.setDate(widget.rank);
+                            }
+
+                            Navigator.of(context).maybePop();
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(7.0),
+                              ),
                               color: widget.date == 0
                                   ? Theme.of(context).primaryColor
                                   : Colors.green,
-                              style: BorderStyle.solid),
-                        ),
-                        child: Center(
-                            child: Text(
-                          widget.date == 0
-                              ? doneButton
-                              : '${'readTextOnDateButton'.tr}${DateFormat('dd. MMM yyyy', widget.language == 'de' ? 'de_DE' : 'en_EN').format(new DateTime.fromMillisecondsSinceEpoch(widget.date))}',
-                          style: TextStyle(
-                            fontSize:
-                                MediaQuery.of(context).size.width / (375 / 14),
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal,
-                            fontFamily: 'interRegular',
+                              border: Border.all(
+                                  width: 3,
+                                  color: widget.date == 0
+                                      ? Theme.of(context).primaryColor
+                                      : Colors.green,
+                                  style: BorderStyle.solid),
+                            ),
+                            child: Center(
+                                child: Text(
+                              widget.date == 0
+                                  ? doneButton
+                                  : '${'readTextOnDateButton'.tr}${DateFormat('dd. MMM yyyy', widget.language == 'de' ? 'de_DE' : 'en_EN').format(new DateTime.fromMillisecondsSinceEpoch(widget.date))}',
+                              style: TextStyle(
+                                fontSize: MediaQuery.of(context).size.width /
+                                    (375 / 14),
+                                color: Colors.white,
+                                fontWeight: FontWeight.normal,
+                                fontFamily: 'interRegular',
+                              ),
+                            )),
                           ),
-                        )),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(7.0),
-                    ),
-                    color: Colors.white,
-                    border: Border.all(
-                        width: 3,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(7.0),
+                        ),
                         color: Colors.white,
-                        style: BorderStyle.solid)),
+                        border: Border.all(
+                            width: 3,
+                            color: Colors.white,
+                            style: BorderStyle.solid)),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
