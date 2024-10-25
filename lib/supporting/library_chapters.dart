@@ -3,7 +3,7 @@ import 'package:flutter_markdown/supporting/articles.dart';
 import 'package:flutter_markdown/supporting/articlesEN.dart';
 import 'package:flutter_markdown/supporting/read_articles.dart';
 import 'package:hypertonie_v_3/controllers/system/size.dart';
-import 'package:flutter_search_bar/flutter_search_bar.dart';
+import 'package:flutter_search_bar/flutter_search_bar.dart' as sb;
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hypertonie_v_3/views/widgets/common_widgets/typography.dart';
@@ -11,13 +11,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hypertonie_v_3/controllers/library/library_main_controller.dart';
 
 class LibraryChapters extends StatefulWidget {
-  LibraryChapters(
-      {Key key,
-      @required this.chapter,
-      @required this.language,
-      @required this.title,
-      @required this.list})
-      : super(key: key);
+  LibraryChapters({
+    required this.chapter,
+    required this.language,
+    required this.title,
+    required this.list,
+  });
 
   final chapter;
   final title;
@@ -41,12 +40,12 @@ class _LibraryChaptersState extends State<LibraryChapters> {
       artEN.add(articles[widget.list[i]]);
     }
     if (widget.language == 'de') {
-      for (Map user in art) {
+      for (Map<String, dynamic> user in art) {
         articleDetails.add(ArticleDetails.fromJson(user));
       }
       articleDetails.removeAt(0);
     } else {
-      for (Map user in artEN) {
+      for (Map<String, dynamic> user in artEN) {
         articleDetails.add(ArticleDetails.fromJson(user));
       }
       articleDetails.removeAt(0);
@@ -81,7 +80,7 @@ class _LibraryChaptersState extends State<LibraryChapters> {
     print(_searchResult[0].title);
   }
 
-  SearchBar searchBar;
+  late sb.SearchBar searchBar;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   AppBar buildAppBar(BuildContext context) {
@@ -108,21 +107,22 @@ class _LibraryChaptersState extends State<LibraryChapters> {
   }
 
   _LibraryChaptersState() {
-    searchBar = new SearchBar(
-        inBar: false,
-        clearOnSubmit: false,
-        closeOnSubmit: false,
-        buildDefaultAppBar: buildAppBar,
-        setState: setState,
-        onChanged: onSearchTextChanged,
-        controller: controller,
-        showClearButton: true,
-        onClosed: () {
-          if (stateController.search.value == true) {
-            stateController.searchToggle();
-          }
-          print("closed");
-        });
+    searchBar = new sb.SearchBar(
+      inBar: false,
+      clearOnSubmit: false,
+      closeOnSubmit: false,
+      buildDefaultAppBar: buildAppBar,
+      setState: setState,
+      onChanged: onSearchTextChanged,
+      controller: controller,
+      showClearButton: true,
+      onClosed: () {
+        if (stateController.search.value == true) {
+          stateController.searchToggle();
+        }
+        print("closed");
+      },
+    );
   }
   final LibraryControllerMain stateController =
       Get.put(LibraryControllerMain());
@@ -175,10 +175,10 @@ class _LibraryChaptersState extends State<LibraryChapters> {
                         shrinkWrap: true,
                         itemCount: articles == null ? 0 : widget.list.length,
                         itemBuilder: (BuildContext context, int index) {
-                          Map article;
+                          var article;
                           if (widget.language == 'en') {
                             article = articlesEN[widget.list[index]];
-                          } else if (widget.language == 'de') {
+                          } else {
                             article = articles[widget.list[index]];
                           }
                           return Padding(
@@ -199,7 +199,7 @@ class _LibraryChaptersState extends State<LibraryChapters> {
                                             return OnClickLibrary(
                                                 chapter: widget.chapter,
                                                 language: widget.language,
-                                                rank: article['rank'],
+                                                rank: article['rank'] ?? '',
                                                 title: article["title"],
                                                 image: article["img"],
                                                 date: date,
@@ -290,10 +290,10 @@ class _LibraryChaptersState extends State<LibraryChapters> {
                             itemCount:
                                 articles == null ? 0 : _searchResult.length,
                             itemBuilder: (BuildContext context, int index) {
-                              Map article;
+                              var article;
                               if (widget.language == 'en') {
                                 article = articlesEN[widget.list[index]];
-                              } else if (widget.language == 'de') {
+                              } else {
                                 article = articles[widget.list[index]];
                               }
                               Map art = {
@@ -402,8 +402,14 @@ class _LibraryChaptersState extends State<LibraryChapters> {
 class ArticleDetails {
   final String id, title, img, content, block, chapter;
 
-  ArticleDetails(
-      {this.id, this.title, this.img, this.content, this.block, this.chapter});
+  ArticleDetails({
+    required this.id,
+    required this.title,
+    required this.img,
+    required this.content,
+    required this.block,
+    required this.chapter,
+  });
 
   factory ArticleDetails.fromJson(Map<String, dynamic> json) {
     return new ArticleDetails(
