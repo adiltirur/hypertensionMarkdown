@@ -130,7 +130,6 @@ class _OnClickLibraryState extends State<OnClickLibrary> {
                                                                                             : (widget.chapter == '17')
                                                                                                 ? LibrarySupporting.chapter17
                                                                                                 : [],
-                            key: null,
                           );
                         },
                       ),
