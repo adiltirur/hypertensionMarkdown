@@ -448,10 +448,10 @@ class _MarkdownWidgetState extends State<MarkdownWidget>
                 date: date,
                 chapter: widget.chapter,
                 title: article["title"] ?? '',
-                image: article["img"],
-                content: article["content"],
+                image: article["img"] ?? '',
+                content: article["content"] ?? '',
                 language: widget.language,
-                block: article["block"],
+                block: article["block"] ?? '',
               ),
             ),
           );
