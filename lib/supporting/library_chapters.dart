@@ -3,7 +3,6 @@ import 'package:flutter_markdown/supporting/articles.dart';
 import 'package:flutter_markdown/supporting/articlesEN.dart';
 import 'package:flutter_markdown/supporting/read_articles.dart';
 import 'package:hypertonie_v_3/controllers/system/size.dart';
-import 'package:flutter_search_bar/flutter_search_bar.dart' as sb;
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hypertonie_v_3/views/widgets/common_widgets/typography.dart';
@@ -11,390 +10,207 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hypertonie_v_3/controllers/library/library_main_controller.dart';
 
 class LibraryChapters extends StatefulWidget {
-  LibraryChapters({
-    required this.chapter,
-    required this.language,
-    required this.title,
-    required this.list,
-  });
+  final dynamic chapter;
+  final dynamic title;
+  final dynamic list;
+  final dynamic language;
 
-  final chapter;
-  final title;
-  final list;
-  final language;
+  const LibraryChapters(
+      {super.key,
+      required this.chapter,
+      required this.language,
+      required this.title,
+      required this.list});
 
   @override
-  _LibraryChaptersState createState() => _LibraryChaptersState();
+  State<LibraryChapters> createState() => _LibraryChaptersState();
 }
 
 class _LibraryChaptersState extends State<LibraryChapters> {
   final FocusNode searchField = FocusNode();
-  TextEditingController controller = new TextEditingController();
-
-  var art = [];
-  var artEN = [];
-  @override
-  void initState() {
-    for (int i = 0; i < widget.list.length; i++) {
-      art.add(articles[widget.list[i]]);
-      artEN.add(articles[widget.list[i]]);
-    }
-    if (widget.language == 'de') {
-      for (Map<String, dynamic> user in art) {
-        articleDetails.add(ArticleDetails.fromJson(user));
-      }
-      articleDetails.removeAt(0);
-    } else {
-      for (Map<String, dynamic> user in artEN) {
-        articleDetails.add(ArticleDetails.fromJson(user));
-      }
-      articleDetails.removeAt(0);
-    }
-    super.initState();
-  }
-
-  List<ArticleDetails> _searchResult = [];
+  final TextEditingController controller = TextEditingController();
+  final LibraryControllerMain stateController =
+      Get.put(LibraryControllerMain());
 
   List<ArticleDetails> articleDetails = [];
+  List<ArticleDetails> _searchResult = [];
 
-  onSearchTextChanged(String text) async {
-    if (stateController.search.value == false) {
+  @override
+  void initState() {
+    super.initState();
+    final art = widget.list.map((id) => articles[id]).toList();
+    final artEN = widget.list.map((id) => articlesEN[id]).toList();
+    final source = widget.language == 'de' ? art : artEN;
+    articleDetails =
+        source.map((json) => ArticleDetails.fromJson(json)).toList();
+    if (articleDetails.isNotEmpty) {
+      articleDetails.removeAt(0);
+    }
+  }
+
+  void onSearchTextChanged(String text) {
+    if (!stateController.search.value) {
       stateController.searchToggle();
     }
     _searchResult.clear();
-
     if (text.isEmpty) {
       setState(() {});
       return;
     }
-    print(text.toLowerCase());
-
-    articleDetails.forEach((articleDetail) {
-      if ((articleDetail.content.toLowerCase().contains(text.toLowerCase())) ||
-          (articleDetail.title.toLowerCase().contains(text.toLowerCase()))) {
-        _searchResult.add(articleDetail);
-      }
-    });
-
+    _searchResult.addAll(articleDetails.where((article) =>
+        article.content.toLowerCase().contains(text.toLowerCase()) ||
+        article.title.toLowerCase().contains(text.toLowerCase())));
     setState(() {});
-    print(_searchResult[0].title);
   }
 
-  late sb.SearchBar searchBar;
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  @override
+  void dispose() {
+    Get.delete<LibraryControllerMain>();
+    controller.dispose();
+    super.dispose();
+  }
 
-  AppBar buildAppBar(BuildContext context) {
-    return new AppBar(
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: RegularText(
-              text: 'backButton'.tr,
-              color: Theme.of(context).primaryColor,
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: RegularText(
+                text: 'backButton'.tr,
+                color: Theme.of(context).primaryColor,
+              ),
             ),
-          ),
-          Heading(
-            text: '${'libraryChapterTab'.tr} ${widget.chapter}',
-            fontSize: 17,
-          ),
-          searchBar.getSearchAction(context)
-        ],
+            Heading(
+              text: '${'libraryChapterTab'.tr} ${widget.chapter}',
+              fontSize: 17,
+            ),
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: ArticleSearchDelegate(
+                    allArticles: articleDetails,
+                    onSelect: (article) async {
+                      var date = await ReadDate.getDate(article.id);
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => OnClickLibrary(
+                          chapter: widget.chapter,
+                          language: widget.language,
+                          rank: article.id,
+                          title: article.title,
+                          image: article.img,
+                          date: date,
+                          content: article.content,
+                          block: article.block,
+                        ),
+                      ));
+                    },
+                  ),
+                );
+              },
+            )
+          ],
+        ),
       ),
-      automaticallyImplyLeading: false,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
+        child: _buildArticleList(articleDetails),
+      ),
     );
   }
 
-  _LibraryChaptersState() {
-    searchBar = new sb.SearchBar(
-      inBar: false,
-      clearOnSubmit: false,
-      closeOnSubmit: false,
-      buildDefaultAppBar: buildAppBar,
-      setState: setState,
-      onChanged: onSearchTextChanged,
-      controller: controller,
-      showClearButton: true,
-      onClosed: () {
-        if (stateController.search.value == true) {
-          stateController.searchToggle();
-        }
-        print("closed");
+  Widget _buildArticleList(List<ArticleDetails> articles) {
+    return ListView.builder(
+      itemCount: articles.length,
+      itemBuilder: (context, index) {
+        final article = articles[index];
+        return GestureDetector(
+          onTap: () async {
+            var date = await ReadDate.getDate(article.id);
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => OnClickLibrary(
+                chapter: widget.chapter,
+                language: widget.language,
+                rank: article.id,
+                title: article.title,
+                image: article.img,
+                date: date,
+                content: article.content,
+                block: article.block,
+              ),
+            ));
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(color: Colors.grey.shade300, width: 0.5),
+              ),
+            ),
+            child: ListTile(
+              contentPadding: const EdgeInsets.only(left: 24, right: 16),
+              title:
+                  ListTitleText(text: '${article.chapter}. ${article.title}'),
+              trailing: const Icon(FontAwesomeIcons.chevronRight,
+                  color: Colors.grey, size: 14),
+            ),
+          ),
+        );
       },
     );
   }
-  final LibraryControllerMain stateController =
-      Get.put(LibraryControllerMain());
+}
+
+class ArticleSearchDelegate extends SearchDelegate<ArticleDetails?> {
+  final List<ArticleDetails> allArticles;
+  final Function(ArticleDetails) onSelect;
+
+  ArticleSearchDelegate({required this.allArticles, required this.onSelect});
+
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: SafeArea(
-        bottom: false,
-        child: new Scaffold(
-          appBar: searchBar.build(context),
-          key: _scaffoldKey,
-          /*   appBar: AppBar(
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: RegularText(
-                    text: 'backButton'.tr,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-                Heading(
-                  text: '${'Chapter'.tr}: ${widget.chapter}',
-                  fontSize: 17,
-                ),
-                GestureDetector(
-                    onTap: () async {
-                      controller.clear();
-                      onSearchTextChanged('');
-                    },
-                    child: Icon(Icons.search)),
-              ],
-            ),
-            automaticallyImplyLeading: false,
-          ), */
-          body: Padding(
-              padding: const EdgeInsets.only(top: 16.0, left: 16, right: 16),
-              child: controller.text.length == 0
-                  ? Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Colors.white,
-                          border: Border.all(color: Colors.grey)),
-                      child: ListView.builder(
-                        padding: EdgeInsets.all(4),
-                        primary: false,
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        itemCount: articles == null ? 0 : widget.list.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          var article;
-                          if (widget.language == 'en') {
-                            article = articlesEN[widget.list[index]];
-                          } else {
-                            article = articles[widget.list[index]];
-                          }
-                          return Padding(
-                            padding: const EdgeInsets.only(top: 8.0),
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: Column(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () async {
-                                      var date = await ReadDate.getDate(
-                                          article['rank']);
-                                      print(date);
-
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) {
-                                            return OnClickLibrary(
-                                                chapter: widget.chapter,
-                                                language: widget.language,
-                                                rank: article['rank'] ?? '',
-                                                title: article["title"],
-                                                image: article["img"],
-                                                date: date,
-                                                content: article["content"],
-                                                block: article["block"]);
-                                          },
-                                        ),
-                                      );
-                                    },
-                                    child: Container(
-                                      height: 64,
-                                      decoration: BoxDecoration(
-                                        border: index != widget.list.length - 1
-                                            ? Border(
-                                                bottom: BorderSide(
-                                                  color: Colors.grey,
-                                                  width: 0.2,
-                                                ),
-                                              )
-                                            : (null),
-                                      ),
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 16.0),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Container(
-                                              child: Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            left: 24.0),
-                                                    child: ListTitleText(
-                                                        text:
-                                                            '${article["chapter"]}. '),
-                                                  ),
-                                                  Container(
-                                                      width: 182,
-                                                      child: ListTitleText(
-                                                          text: article[
-                                                              "title"])),
-                                                ],
-                                              ),
-                                            ),
-                                            Icon(
-                                              FontAwesomeIcons.chevronRight,
-                                              color: Colors.grey,
-                                              size: 14,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Visibility(
-                                      visible: index == 0,
-                                      child: Divider(
-                                        thickness: 0.2,
-                                      )),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    )
-                  : _searchResult.length == 0
-                      ? Container(
-                          child: Center(
-                            child: SubHeading(text: 'emptySearch'.tr),
-                          ),
-                        )
-                      : Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: Colors.white,
-                              border: Border.all(color: Colors.grey)),
-                          child: ListView.builder(
-                            padding: EdgeInsets.all(4),
-                            primary: false,
-                            scrollDirection: Axis.vertical,
-                            shrinkWrap: true,
-                            itemCount:
-                                articles == null ? 0 : _searchResult.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              var article;
-                              if (widget.language == 'en') {
-                                article = articlesEN[widget.list[index]];
-                              } else {
-                                article = articles[widget.list[index]];
-                              }
-                              Map art = {
-                                'title': _searchResult[index].title,
-                                'chapter': _searchResult[index].chapter,
-                                'img': _searchResult[index].img,
-                                'rank': _searchResult[index].id,
-                                'content': _searchResult[index].content,
-                                'block': _searchResult[index].block,
-                              };
-
-                              return Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: GestureDetector(
-                                  onTap: () {},
-                                  child: Column(
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 16),
-                                        child: GestureDetector(
-                                          onTap: () async {
-                                            var date = await ReadDate.getDate(
-                                                article['rank']);
-                                            print(date);
-
-                                            Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                builder: (context) {
-                                                  return OnClickLibrary(
-                                                      chapter: widget.chapter,
-                                                      language: widget.language,
-                                                      rank: art['rank'],
-                                                      title: art["title"],
-                                                      image: art["img"],
-                                                      date: date,
-                                                      content: art["content"],
-                                                      block: art["block"]);
-                                                },
-                                              ),
-                                            );
-                                          },
-                                          child: Container(
-                                            height: 64,
-                                            decoration: BoxDecoration(
-                                              border: index != 0 ||
-                                                      index !=
-                                                          _searchResult.length -
-                                                              1
-                                                  ? Border(
-                                                      bottom: BorderSide(
-                                                        color: Colors.grey,
-                                                        width: 0.2,
-                                                      ),
-                                                    )
-                                                  : (null),
-                                            ),
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  right: 16.0),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Container(
-                                                      width: ScreenSize
-                                                          .convertWidth(
-                                                              index == 0
-                                                                  ? 209
-                                                                  : 278,
-                                                              context),
-                                                      child: ListTitleText(
-                                                          text:
-                                                              '${_searchResult[index].chapter} ${_searchResult[index].title}')),
-                                                  Icon(
-                                                    FontAwesomeIcons
-                                                        .chevronRight,
-                                                    color: Colors.grey,
-                                                    size: 14,
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Visibility(
-                                          visible: index == 0,
-                                          child: Divider(
-                                            thickness: 0.2,
-                                          )),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        )),
+  List<Widget>? buildActions(BuildContext context) => [
+        IconButton(
+          icon: const Icon(Icons.clear),
+          onPressed: () => query = '',
         ),
-      ),
+      ];
+
+  @override
+  Widget? buildLeading(BuildContext context) => IconButton(
+        icon: const Icon(Icons.arrow_back),
+        onPressed: () => close(context, null),
+      );
+
+  @override
+  Widget buildResults(BuildContext context) => buildSuggestions(context);
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    final results = allArticles
+        .where((article) =>
+            article.title.toLowerCase().contains(query.toLowerCase()) ||
+            article.content.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+
+    return ListView.builder(
+      itemCount: results.length,
+      itemBuilder: (context, index) {
+        final article = results[index];
+        return ListTile(
+          title: Text('${article.chapter}. ${article.title}'),
+          trailing: const Icon(FontAwesomeIcons.chevronRight,
+              size: 14, color: Colors.grey),
+          onTap: () {
+            onSelect(article);
+            close(context, article);
+          },
+        );
+      },
     );
   }
 }
@@ -412,7 +228,7 @@ class ArticleDetails {
   });
 
   factory ArticleDetails.fromJson(Map<String, dynamic> json) {
-    return new ArticleDetails(
+    return ArticleDetails(
       id: json['rank'],
       chapter: json['chapter'],
       title: json['title'],
