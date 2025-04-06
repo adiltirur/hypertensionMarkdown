@@ -11,12 +11,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 class OnClickLibrary extends StatefulWidget {
   final String title;
   final String rank;
-  final String? image;
-  final String? content;
+  final String image;
+  final String content;
   final String? uId;
-  final String? block;
+  final String block;
   final String language;
-  final int? date;
+  final int date;
   final chapter;
 
   OnClickLibrary({
@@ -24,11 +24,11 @@ class OnClickLibrary extends StatefulWidget {
     required this.language,
     required this.rank,
     required this.chapter,
-    this.date,
-    this.image,
-    this.content,
+    required this.date,
+    required this.image,
+    required this.content,
     this.uId,
-    this.block,
+    required this.block,
   });
   @override
   _OnClickLibraryState createState() => _OnClickLibraryState();
@@ -253,14 +253,14 @@ class _OnClickLibraryState extends State<OnClickLibrary> {
             ),
           ),
           Visibility(
-            visible: (block != null && block.isNotEmpty),
+            visible: (block.isNotEmpty),
             child: Container(
               child: Padding(
                 padding: const EdgeInsets.only(
                     left: 16.0, top: 8.0, bottom: 8.0, right: 8.0),
                 child: MarkdownBody(
                   language: language,
-                  data: block ?? '',
+                  data: block,
                   chapter: widget.chapter,
                   styleSheet: MarkdownStyleSheet.fromTheme(Theme.of(context))
                       .copyWith(
@@ -283,7 +283,7 @@ class _OnClickLibraryState extends State<OnClickLibrary> {
             ),
           ),
           Visibility(
-            visible: (block != null && block.isNotEmpty),
+            visible: (block.isNotEmpty),
             child: SizedBox(
               height: MediaQuery.of(context).size.width / (375 / 8),
             ),
@@ -292,7 +292,7 @@ class _OnClickLibraryState extends State<OnClickLibrary> {
             padding: const EdgeInsets.only(bottom: 8.0),
             child: MarkdownBody(
               language: language,
-              data: widget.content ?? '',
+              data: widget.content,
               chapter: widget.chapter,
               styleSheet: MarkdownStyleSheet.fromTheme(Theme.of(context))
                   .copyWith(
